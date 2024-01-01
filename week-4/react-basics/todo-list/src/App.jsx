@@ -1,33 +1,54 @@
-// import { useState } from 'react'
-
 import { useState } from "react";
-import "./App.css";
-import todo from "./Components/todo";
+import Todo from "./Components/todo";
 
-function App() {
-  const [inputValue, setInputValue] = useState("");
-  const [todo, setTodo] = useState([]);
+const App = () => {
+  const [todos, setTodos] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
-  function getValue(event) {
-    setInputValue(event.target.value);
-  }
+  const addTodo = () => {
+    if (title.trim() === "" || description.trim() === "") {
+      console.log("Unable to add todo");
+      return;
+    }
 
-  function handleValue() {}
+    setTodos([...todos, { title, description }]);
+    setTitle("");
+    setDescription("");
+  };
+
   return (
     <div>
-    <div>
+      <h1>Todo</h1>
+      <div>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
 
-      <input id="inputValue" value={inputValue} onChange={getValue} />
-      <button onClick={handleValue}></button>
+        <input
+          type="Text"
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <button onClick={addTodo}>Create Todo</button>
+      </div>
+      <div>
+        <ul>
+          {todos.map((todo, index) => (
+            <Todo
+              key={index}
+              title={todo.title}
+              description={todo.description}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
-    {todo.map((element , index)=>{
-      return (
-        <todo key={index} name/>
-      )
-    })}
-    </div>
-    
   );
-}
+};
 
 export default App;
