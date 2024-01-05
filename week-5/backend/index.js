@@ -1,10 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 const { createTodo } = require("./types");
 const { todo } = require("./db");
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.post("/todo", function (req, res) {
   const createPayload = req.body;
@@ -33,26 +35,30 @@ app.get("/todos", function (req, res) {
   });
 });
 
-app.put("/complete", async function (req, res) {
-  const updatePayload = req.body;
-  const parsedPayload = updateTodo.safeParse(updatePayload);
-  if (!parsedPayload.success) {
-    res.status(404).json({
-      msg: "Ypu sent the wrong inputs",
+app.put("/completed", async (req, res) => {
+  console.log(req.body);
+  const parsedResult = updateTodoSchema.safeParse(req.body);
+
+  if (!parsedResult.success) {
+    return res.status(411).json({
+      message: "Wrong inputs",
     });
-    return;
   }
-  await todo.update(
+
+  await todo.updateOne(
     {
       _id: req.body.id,
     },
     {
-      complete: true,
+      completed: true,
     }
   );
+
   res.json({
-    msg: "Todo marked as completed ",
+    message: "Todo has been updated",
   });
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log("Server hosted in port 3000");
+});

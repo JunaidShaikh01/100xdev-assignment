@@ -4,7 +4,8 @@ import { useRef, useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 export default function TodoInput({ onSateChange }) {
-  const [todo, setTodo] = useState([]);
+  const [updateState, setUpdateSate] = useState(0);
+  // const [todo, setTodo] = useState([]);
   const titleRef = useRef("");
   const descriptionRef = useRef("");
 
@@ -18,11 +19,31 @@ export default function TodoInput({ onSateChange }) {
       return;
     }
 
-    const id = Math.floor(Math.random() * 10000);
+    // const id = Math.floor(Math.random() * 10000);
 
     // setTodo([...todo, { id, titlValue, descriptionValue }]);
-    setTodo((prevTodo) => [...prevTodo, { id, titlValue, descriptionValue }]);
-    onSateChange([...todo, { id, titlValue, descriptionValue }]);
+    // setTodo((prevTodo) => [...prevTodo, { id, titlValue, descriptionValue }]);
+    // onSateChange([...todo, { id, titlValue, descriptionValue }]);
+
+    fetch("http://localhost:3000/todo", {
+      method: "POST",
+      body: JSON.stringify({
+        title: titlValue,
+        description: descriptionValue,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then(async function (res) {
+      await res.json();
+      alert("Todo added");
+    });
+
+    titleRef.current.value = "";
+    descriptionRef.current.value = "";
+
+    setUpdateSate(updateState + 1);
+    onSateChange("Todoinput Increament Value:" + updateState);
   }
 
   return (

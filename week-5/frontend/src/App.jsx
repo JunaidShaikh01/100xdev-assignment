@@ -9,6 +9,7 @@ export default function App() {
   const handleSateChange = (newState) => {
     setStateChange(newState);
   };
+  console.log("App. jsx Increament Value :", stateChange);
   return (
     <div>
       <h1>Todo App</h1>
