@@ -30,6 +30,7 @@ export default function TodoInput({ onSateChange }) {
       body: JSON.stringify({
         title: titlValue,
         description: descriptionValue,
+        completed: false,
       }),
       headers: {
         "Content-type": "application/json",

@@ -2,8 +2,8 @@
 // import React from "react";
 import { useEffect, useState } from "react";
 
-export default function TodoList({ update }) {
-  // console.log("TodoList.jsx increaemnt Value :", update);
+export default function TodoList({ todovalue }) {
+  console.log("TodoList.jsx increaemnt Value :", todovalue);
   const [todosArr, setTodosArr] = useState([]);
 
   useEffect(() => {
@@ -12,7 +12,9 @@ export default function TodoList({ update }) {
       .then((data) => {
         setTodosArr(data.todos);
       });
-  }, [update, todosArr]);
+
+    console.log("fetching ......");
+  }, [todovalue]);
 
   return (
     <div>
