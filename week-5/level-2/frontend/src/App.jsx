@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import UserInput from "./components/UserInput";
-import Cards from "./components/Cards";
-import Button from "./components/Button";
+import UserInput from "./components/UserInput/UserInput";
+import Cards from "./components/Cards/Cards";
+import Button from "./components/Button/Button";
 
 function App() {
   const [cards, setCards] = useState();
