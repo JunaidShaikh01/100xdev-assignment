@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+
+import styles from "./UserInput.module.css";
 export default function UserInput({ onStateChange, setShowForm }) {
   // const [updateState, setUpdateState] = useState(0);
   function submitHadler(e) {
@@ -30,37 +32,39 @@ export default function UserInput({ onStateChange, setShowForm }) {
     setShowForm(false);
   }
   return (
-    <form onSubmit={submitHadler}>
-      <label htmlFor="name">
-        Name:
-        <input type="text" name="name" />
-      </label>
+    <form className={styles.form} onSubmit={submitHadler}>
+      <div className={styles.formInputs}>
+        <label htmlFor="name">
+          Name:
+          <input type="text" name="name" />
+        </label>
 
-      <label htmlFor="description">
-        Description:
-        <textarea name="description" />
-      </label>
+        <label htmlFor="description">
+          Description:
+          <textarea name="description" />
+        </label>
 
-      <label htmlFor="interest">
-        Interests:
-        <input
-          type="text"
-          name="interest"
-          placeholder="Separate interest by comma"
-        />
-      </label>
+        <label htmlFor="interest">
+          Interests:
+          <input
+            type="text"
+            name="interest"
+            placeholder="Separate interest by comma"
+          />
+        </label>
 
-      <label htmlFor="linkedin">
-        Linkdin:
-        <input type="text" name="linkdin" />
-      </label>
+        <label htmlFor="linkedin">
+          Linkdin:
+          <input type="text" name="linkdin" />
+        </label>
 
-      <label htmlFor="twitter">
-        Twitter:
-        <input type="text" name="twitter" />
-      </label>
+        <label htmlFor="twitter">
+          Twitter:
+          <input type="text" name="twitter" />
+        </label>
 
-      <button>Add Card</button>
+        <button>Add Card</button>
+      </div>
     </form>
   );
 }

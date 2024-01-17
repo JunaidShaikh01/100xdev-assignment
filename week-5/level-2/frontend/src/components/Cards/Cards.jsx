@@ -1,5 +1,5 @@
 import React from "react";
-
+import styles from "./Cards.module.css";
 export default function Cards({
   setCards,
   id,
@@ -68,16 +68,16 @@ export default function Cards({
     }
   };
   return (
-    <div>
+    <div className={styles.cards}>
       <h2>{name}</h2>
       <p>{description}</p>
-      <h4>Interest</h4>
-      <ul>
+      <h3>Interest</h3>
+      <ul className={styles.interests}>
         {interest.map((interest, index) => (
           <li key={index}>{interest}</li>
         ))}
       </ul>
-      <div>
+      <div className={styles.links}>
         <a href="https://in.linkedin.com/" target="_blank">
           Linkdin
         </a>
@@ -85,14 +85,16 @@ export default function Cards({
           Twitter
         </a>
       </div>
-      <button
-        onClick={() =>
-          editHadler(id, name, description, interest, linkdin, twitter)
-        }
-      >
-        Edit
-      </button>
-      <button onClick={() => deleteHandler(id, name)}>Delete</button>
+      <div className={styles.buttons}>
+        <button
+          onClick={() =>
+            editHadler(id, name, description, interest, linkdin, twitter)
+          }
+        >
+          Edit
+        </button>
+        <button onClick={() => deleteHandler(id, name)}>Delete</button>
+      </div>
     </div>
   );
 }

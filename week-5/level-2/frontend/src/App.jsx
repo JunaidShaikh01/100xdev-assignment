@@ -8,10 +8,6 @@ function App() {
   const [cards, setCards] = useState();
   const [showForm, setShowForm] = useState(false);
 
-  // function handleStateChange(newState) {
-  //   setUpdateState(newState);
-  // }
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -28,26 +24,29 @@ function App() {
   }, []);
 
   return (
-    <>
+    <div className="main">
       {showForm ? (
         <UserInput onStateChange={setCards} setShowForm={setShowForm} />
       ) : (
         <Button setShowForm={setShowForm} />
       )}
-      {cards &&
-        cards.map((card) => (
-          <Cards
-            setCards={setCards}
-            key={card._id}
-            id={card._id}
-            name={card.name}
-            description={card.description}
-            interest={card.interest}
-            linkdin={card.linkdin}
-            twitter={card.twitter}
-          />
-        ))}
-    </>
+
+      <div className="cardOutput">
+        {cards &&
+          cards.map((card) => (
+            <Cards
+              setCards={setCards}
+              key={card._id}
+              id={card._id}
+              name={card.name}
+              description={card.description}
+              interest={card.interest}
+              linkdin={card.linkdin}
+              twitter={card.twitter}
+            />
+          ))}
+      </div>
+    </div>
   );
 }
 
