@@ -1,0 +1,19 @@
+.card {
+  width: 40vw;
+  height: 60vh;
+  background: blue;
+  display: flex;
+  flex-direction: column;
+}
+
+.headerColor {
+  background: rgb(62, 197, 208);
+  height: 40%;
+}
+
+.footer {
+  margin-top: auto;
+  background: blueviolet;
+  color: white;
+  height: 10%;
+}
