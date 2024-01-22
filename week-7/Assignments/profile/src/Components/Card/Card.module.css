@@ -1,19 +1,32 @@
 .card {
-  width: 40vw;
+  width: 30vw;
+  max-width: 40vw;
   height: 60vh;
-  background: blue;
+  background: white;
   display: flex;
   flex-direction: column;
+  position: relative;
+  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .headerColor {
   background: rgb(62, 197, 208);
   height: 40%;
 }
-
+.profileDetails {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  background: transparent;
+  width: 60%;
+  max-height: 35vh;
+}
 .footer {
   margin-top: auto;
-  background: blueviolet;
-  color: white;
-  height: 10%;
+  background: white;
+  color: black;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid gray;
 }
