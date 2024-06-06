@@ -64,7 +64,7 @@ export async function updateTodo(todoId: number) {
 export async function getTodos(userId: number) {
   const todoArray = await prisma.todo.findMany({
     where: {
-      id: userId,
+      userId: userId,
     },
   });
   console.log(todoArray);
